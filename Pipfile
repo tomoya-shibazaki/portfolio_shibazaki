@@ -13,8 +13,8 @@ django-rest-knox = "*"
 django-webpack-loader = "*"
 gunicorn = "*"
 dj-database-url = "*"
-whitenoise = "==3.3.1"
 psycopg2-binary = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"
