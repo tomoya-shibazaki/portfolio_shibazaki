@@ -1,0 +1,17 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media
+
+### Django.Python Stack ###
+# Byte-complied / optimized / DLL files
+*.py[cod]
+*$py.class
+
+
+node_modules
+dist
+webpack-stats.json
