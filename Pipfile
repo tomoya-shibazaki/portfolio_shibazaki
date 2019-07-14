@@ -12,9 +12,9 @@ djangorestframework = "*"
 django-rest-knox = "*"
 django-webpack-loader = "*"
 gunicorn = "*"
-whitenoise = "*"
 dj-database-url = "*"
-psycopg2 = "*"
+whitenoise = "==3.3.1"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
