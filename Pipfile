@@ -11,6 +11,8 @@ Django = "==2.0.4"
 djangorestframework = "*"
 django-rest-knox = "*"
 django-webpack-loader = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"
