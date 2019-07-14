@@ -13,7 +13,7 @@ SECRET_KEY = 'p*&swv#$9#*gsg6=kl5o2)^ovv12=@$_l0_e(qxm9gzc_mfyc1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['portfolio-shibazaki', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['portfolio-shibazaki.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -65,11 +65,14 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default':dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
@@ -125,3 +128,4 @@ WEBPACK_LOADER = {
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
