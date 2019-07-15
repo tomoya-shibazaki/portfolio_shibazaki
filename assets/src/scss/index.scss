@@ -1,0 +1,17 @@
+$font-family-base: meiryo;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+body { padding-top: 70px; }
+
+.form-control:focus, input:active, textarea:active{
+  outline: 0;
+  border-color: var(--accent_color, #C0C0C0);
+  box-shadow: 1px 1px 1px var( --accent_color, #C0C0C0);
+}
+
+#link {
+  color: rgb(10,10,10);
+  text-decoration: none;
+}

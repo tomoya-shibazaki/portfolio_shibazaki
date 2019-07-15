@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -11,20 +10,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'p*&swv#$9#*gsg6=kl5o2)^ovv12=@$_l0_e(qxm9gzc_mfyc1'
-SECRET_KEY = os.enviro  n['SECRET_KEY']
+SECRET_KEY = 'p*&swv#$9#*gsg6=kl5o2)^ovv12=@$_l0_e(qxm9gzc_mfyc1'
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['portfolio-shibazaki.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
-  'https://portfolio-shibazaki.herokuapp.com',
-)
 
 # Application definition
 
@@ -46,7 +42,6 @@ SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,9 +80,18 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
 DATABASES = {
-    'default':dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'crud',
+        'USER': 'student',
+        'PASSWORD': 'student',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
+
 
 
 # Password validation
@@ -138,8 +142,3 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

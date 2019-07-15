@@ -7,11 +7,12 @@ class Profile(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
 
   GENDER = [
+      ('-', '-'),
       ('M', '男'),
       ('F', '女'),
   ]
   gender = models.CharField(
-      max_length=2,
+      max_length=1,
       choices=GENDER,
-      default='男',
+      default='-',
   )

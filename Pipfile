@@ -15,6 +15,7 @@ gunicorn = "*"
 dj-database-url = "*"
 psycopg2-binary = "*"
 whitenoise = "==3.3.1"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"

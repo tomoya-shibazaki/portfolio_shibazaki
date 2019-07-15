@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './components/App'
 
-class App extends React.Component {
-  render () {
-    return (
-      <h1>Django + React + Webpack + Babel</h1>
-    )
-  }
-}
+
+import 'bootstrap'
+import '../scss/index.scss'
+
+
 ReactDOM.render(<App />, document.getElementById('react-app'))
