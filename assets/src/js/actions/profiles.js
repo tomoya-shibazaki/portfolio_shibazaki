@@ -3,8 +3,8 @@ import axios from 'axios'
 import { createMessage, returnErrors } from './messages'
 import { GET_PROFILES, DELETE_PRORILE, ADD_PROFILE, GET_ERRORS } from './types'
 
-const api_url = 'http://127.0.0.1:8000'
-// const api_url = 'https://portfolio-shibazaki.herokuapp.com'
+// const api_url = 'http://127.0.0.1:8000'
+const api_url = 'https://portfolio-shibazaki.herokuapp.com'
 
 // GET PROFILES
 export const getProfiles = () => dispatch => {
