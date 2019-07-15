@@ -8,4 +8,5 @@ urlpatterns = [
     
     path('',TemplateView.as_view(template_name='frontend/index.html')),
     path('', include('profiles.urls')),
+    path('', include('accounts.urls')),
 ]

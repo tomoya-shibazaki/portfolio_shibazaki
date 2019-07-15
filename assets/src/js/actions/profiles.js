@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-import { createMessage } from './messages'
+import { createMessage, returnErrors } from './messages'
 import { GET_PROFILES, DELETE_PRORILE, ADD_PROFILE, GET_ERRORS } from './types'
 
-// const api_url = 'http://127.0.0.1:8000'
-const api_url = 'https://portfolio-shibazaki.herokuapp.com'
+const api_url = 'http://127.0.0.1:8000'
+// const api_url = 'https://portfolio-shibazaki.herokuapp.com'
 
 // GET PROFILES
 export const getProfiles = () => dispatch => {
@@ -14,7 +14,7 @@ export const getProfiles = () => dispatch => {
         type: GET_PROFILES,
         payload: res.data
       })
-    }).catch(err => console.log(err))
+    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
 // DELETE PRORILE
@@ -26,7 +26,7 @@ export const deleteProrile = (id) => dispatch => {
         type: DELETE_PRORILE,
         payload: id
       })
-    }).catch(err => console.log(err))
+    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
 // ADD PROFILES
@@ -38,14 +38,5 @@ export const addProfile = profile => dispatch => {
         type: ADD_PROFILE,
         payload: res.data
       })
-    }).catch(err => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status
-      }
-      dispatch({
-        type: GET_ERRORS,
-        payload: errors
-      })
-    })
+    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }

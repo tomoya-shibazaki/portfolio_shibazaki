@@ -16,7 +16,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['portfolio-shibazaki.herokuapp.com']
 
@@ -39,9 +39,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'webpack_loader',
     'corsheaders',
+    'knox',
+    'accounts'
 ]
 
 SITE_ID = 1
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES' : ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
