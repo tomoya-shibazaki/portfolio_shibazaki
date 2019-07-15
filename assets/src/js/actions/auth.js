@@ -13,8 +13,8 @@ import {
     REGISTER_FAIL
 } from './types'
 
-let url = 'http://127.0.0.1:8000'
-// let url = 'https://portfolio-shibazaki.herokuapp.com'
+// let url = 'http://127.0.0.1:8000'
+let url = 'https://portfolio-shibazaki.herokuapp.com'
 
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {

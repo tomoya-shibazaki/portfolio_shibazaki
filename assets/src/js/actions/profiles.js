@@ -4,8 +4,8 @@ import { tokenConfig } from './auth'
 
 import { GET_PROFILES, DELETE_PROFILE, ADD_PROFILE } from './types'
 
-const api_url = 'http://127.0.0.1:8000'
-// const api_url = 'https://portfolio-shibazaki.herokuapp.com'
+// const api_url = 'http://127.0.0.1:8000'
+const api_url = 'https://portfolio-shibazaki.herokuapp.com'
 
 
 // GET LEADS
