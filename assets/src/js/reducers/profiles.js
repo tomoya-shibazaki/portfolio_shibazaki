@@ -1,4 +1,4 @@
-import { GET_PROFILES, DELETE_PRORILE, ADD_PROFILE } from '../actions/types.js'
+import { GET_PROFILES, DELETE_PROFILE, ADD_PROFILE } from '../actions/types.js'
 
 const initialState = {
   profiles: []
@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
         ...state,
         profiles: action.payload
       }
-    case DELETE_PRORILE:
+    case DELETE_PROFILE:
       return {
         ...state,
         profiles: state.profiles.filter(profile => profile.id !== action.payload)

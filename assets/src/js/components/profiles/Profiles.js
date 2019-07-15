@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { getProfiles, deleteProrile } from '../../actions/profiles'
+import { getProfiles, deleteProfile } from '../../actions/profiles'
 
 export class Profiles extends Component {
 
@@ -16,7 +17,6 @@ export class Profiles extends Component {
   render() {
     return (
       <div className='m-auto' style={{width: "46rem"}}>
-        {/* <h3 className='mt-3'>Lists</h3> */}
           <table className='table table-sm table-hover mt-5 ml-auto mr-auto'>
           <thead>
             <tr className='text-muted'>
@@ -27,9 +27,9 @@ export class Profiles extends Component {
               <th>Message</th>
               <th>
               <div style={{border: '1px solid rgb(5,5,5)', borderRadius: '5px 5px 5px 5px', width: '60px', textAlign: 'center'}}>
-              {/* <Link to='/edit' id='link' style={{fontWeight: 70}}> */}
+              <Link to='/edit' id='link' style={{fontWeight: 70}}>
                 Edit
-              {/* </Link> */}
+              </Link>
               </div>
               </th>
             </tr>
@@ -44,7 +44,7 @@ export class Profiles extends Component {
                 <td>{profile.message}</td>
                 <td>
                   <button 
-                    onClick={this.props.deleteProrile.bind(this, profile.id)} 
+                    onClick={this.props.deleteProfile.bind(this, profile.id)} 
                     className='btn btn-outline-danger btn-sm'>
                     Delete
                   </button>
@@ -63,4 +63,4 @@ const mapStateToProps = state => ({
   profiles: state.profiles.profiles
 })
 
-export default connect(mapStateToProps, { getProfiles, deleteProrile })(Profiles)
+export default connect(mapStateToProps, { getProfiles, deleteProfile })(Profiles)

@@ -16,9 +16,9 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False # Heroku deploy -> Server Error(500)
+DEBUG = True
 
-COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 ALLOWED_HOSTS = ['portfolio-shibazaki.herokuapp.com']
 

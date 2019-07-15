@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { addProfile } from '../../actions/profiles'
 
@@ -29,7 +30,7 @@ export class Form extends Component {
 
     if(message !== prevProps.message) {
       if (message.deleteProfile) console.log(message.deleteProfile)
-      // if (message.addList) console.log(message.addProfile)
+      if (message.addProfile) console.log(message.addProfile)
     }
   }
 
@@ -79,6 +80,7 @@ export class Form extends Component {
               name="email"
               onChange={this.onChange}
               value={email}
+              required
             />
             {this.props.error.msg.email ? <p style={{color: 'red'}}>{this.props.error.msg.email}</p> : ''}
           </div>
@@ -106,11 +108,11 @@ export class Form extends Component {
           </div>
           <div className="form-group">
            <div className='btn-group' >
-            {/* <Link to='/'> */}
+            <Link to='/'>
              <button className="btn btn-outline-primary mr-5 ml-0" style={{width: "20rem"}}>
                戻る
              </button>
-            {/* </Link> */}
+            </Link>
             </div>   
             <div className='btn-group'>
              <button type="submit" className="btn btn-outline-primary" style={{width: "20rem"}}>

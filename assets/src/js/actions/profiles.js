@@ -1,42 +1,47 @@
 import axios from 'axios'
-
 import { createMessage, returnErrors } from './messages'
-import { GET_PROFILES, DELETE_PRORILE, ADD_PROFILE, GET_ERRORS } from './types'
+import { tokenConfig } from './auth'
 
-// const api_url = 'http://127.0.0.1:8000'
-const api_url = 'https://portfolio-shibazaki.herokuapp.com'
+import { GET_PROFILES, DELETE_PROFILE, ADD_PROFILE } from './types'
 
-// GET PROFILES
-export const getProfiles = () => dispatch => {
-  axios.get(`${api_url}/api/profiles/`)
+const api_url = 'http://127.0.0.1:8000'
+// const api_url = 'https://portfolio-shibazaki.herokuapp.com'
+
+
+// GET LEADS
+export const getProfiles = () => (dispatch, getState) => {
+  axios.get(`${api_url}/api/profiles/`, tokenConfig(getState))
     .then(res => {
-      dispatch({
-        type: GET_PROFILES,
-        payload: res.data
-      })
-    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
+        dispatch({
+            type: GET_PROFILES,
+            payload: res.data
+        })
+    })
+    .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
-// DELETE PRORILE
-export const deleteProrile = (id) => dispatch => {
-  axios.delete(`${api_url}/api/profiles/${id}/`)
-    .then(() => {
-      dispatch(createMessage({ deleteProfile: "削除しました" }))
-      dispatch({
-        type: DELETE_PRORILE,
-        payload: id
-      })
-    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
+// DELETE LEADS
+export const deleteProfile = (id) => (dispatch, getState) => {
+  axios.delete(`${api_url}/api/profiles/${id}/`, tokenConfig(getState))
+    .then( () => {
+        dispatch(createMessage({ deleteProfile: "削除しました" }))
+        dispatch({
+            type: DELETE_PROFILE,
+            payload: id
+        })
+    })
+    .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }
 
-// ADD PROFILES
-export const addProfile = profile => dispatch => {
-  axios.post(`${api_url}/api/profiles/`, profile)
+// ADD LEADS
+export const addProfile = (profile) => (dispatch, getState) => {
+  axios.post(`${api_url}/api/profiles/`, profile, tokenConfig(getState))
     .then(res => {
-      dispatch(createMessage({ addProfile: "追加しました" }))
-      dispatch({
-        type: ADD_PROFILE,
-        payload: res.data
-      })
-    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
+        dispatch(createMessage({ addProfile: "追加しました" }))
+        dispatch({
+            type: ADD_PROFILE,
+            payload: res.data
+        })
+    })
+    .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 }

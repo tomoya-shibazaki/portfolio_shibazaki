@@ -19,15 +19,15 @@ export class Alertvar extends Component {
       if (error.msg.email) console.log(`Email: ${error.msg.email}`)
       if (error.msg.message) console.log(`Message: ${error.msg.message}`)
 
-      // if (error.msg.non_field_errors) console.log(error.msg.non_field_errors.join())
+      if (error.msg.non_field_errors) console.log(error.msg.non_field_errors.join())
     }
 
     if(message !== prevProps.message) {
       if (message.deleteProfile) console.log(message.deleteProfile)
       if (message.addProfile) console.log(message.addProfile)
-      // if (message.passwordNotMatch) console.log(message.passwordNotMatch)
-      // if (message.successLogin) console.log(message.successLogin)
-      // if (message.successRegister) console.log(message.successRegister)
+      if (message.passwordNotMatch) console.log(message.passwordNotMatch)
+      if (message.successLogin) console.log(message.successLogin)
+      if (message.successRegister) console.log(message.successRegister)
     }
 
   }
@@ -43,9 +43,11 @@ export class Alertvar extends Component {
         <div className='mt-0'>
             {this.props.message.deleteProfile ? <Alert variant="success" onClose={handleDismiss} dismissible>{this.props.message.deleteProfile}</Alert> : ''}
             {this.props.message.addProfile ? <Alert variant="success" onClose={handleDismiss} dismissible>{this.props.message.addProfile}</Alert> : ''}
-            {/* {this.props.message.successLogin ? <Alert variant="success" onClose={handleDismiss} dismissible>{this.props.message.successLogin}</Alert> : ''}            {this.props.message.successRegister ? <Alert variant="success" onClose={handleDismiss} dismissible>{this.props.message.successRegister}</Alert> : ''} */}
-            
-            {/* {this.props.error.msg.non_field_errors ? <Alert variant="danger" onClose={handleDismiss} dismissible>{this.props.error.msg.non_field_errors}</Alert> : ''} */}
+            {this.props.message.successLogin ? <Alert variant="success" onClose={handleDismiss} dismissible>{this.props.message.successLogin}</Alert> : ''}
+            {this.props.message.successRegister ? <Alert variant="success" onClose={handleDismiss} dismissible>{this.props.message.successRegister}</Alert> : ''}
+            {this.props.message.passwordNotMatch ? <Alert variant="danger" onClose={handleDismiss} dismissible>{this.props.error.message.passwordNotMatch}</Alert> : ''}
+
+            {this.props.error.msg.non_field_errors ? <Alert variant="danger" onClose={handleDismiss} dismissible>{this.props.error.msg.non_field_errors}</Alert> : ''}
         </div>
       )
     } else {
