@@ -80,7 +80,7 @@ export class Form extends Component {
               name="email"
               onChange={this.onChange}
               value={email}
-              required
+              // required
             />
             {this.props.error.msg.email ? <p style={{color: 'red'}}>{this.props.error.msg.email}</p> : ''}
           </div>
