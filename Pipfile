@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 pytz = "==2018.4"
-Django = "==2.0.12"
+Django = "==2.2.10"
 djangorestframework = "*"
 django-rest-knox = "*"
 django-webpack-loader = "*"
